@@ -1,9 +1,6 @@
 /**
-        * @author 5121170
+        * @author Dexter Tournesy
         * Title: Airplane
-        * Semester: Fall 2022
-        * Prof: Waqas
-        * Descriptions:
         * This progam displays a seat arrangement for a plane using
         * a 2 dimensional array. The user then is prompted to select
         * a seat. Once all seats are selected, or the user chooses to
