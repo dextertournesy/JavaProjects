@@ -26,7 +26,7 @@ public class Main {
         else
         {
              playerOne = new Computer("Computer 1");
-             playerTwo = new Computer("Compluter 2");
+             playerTwo = new Computer("Computer 2");
         }
         getMenu();
         String selection = keyboard.nextLine();
@@ -75,39 +75,89 @@ public class Main {
                 System.out.println("Invalid Selection");
                 playerSelection = keyboard.nextLine();
             }
-           determineWinner(playerOne.getMove(), player1.getMove());
+           determineWinnerWithPlayer(playerTwo.computerMove(), player1.getMove());
+           getMenu();
+        }
+        else
+        {
+            determineWinnerWithComputers(playerOne.computerMove(), playerTwo.computerMove());
+            getMenu();
         }
     }
-    public static void determineWinner(String move1, String move2)
+    public static void determineWinnerWithPlayer(String move1, String move2)
     {
-        if (move1.equals(move2))
+        if (move1.equalsIgnoreCase(move2))
         {
-            System.out.println("Computer threw: " + move1 + " " + player1.getName() + " threw: " + move2 +
-                    ". Resulting in a draw!");
+            System.out.println("Game resulted in a draw!");
         }
-        else if (move1.equalsIgnoreCase("Rock") && move2.equalsIgnoreCase("Paper"))
+        else if (move1.equalsIgnoreCase("Paper") && move2.equalsIgnoreCase("rock"))
         {
-
+            System.out.println("Paper 📄 beats rock! Computer wins!");
+            playerTwo.win();
+        }
+        else if (move1.equalsIgnoreCase("rock") && move2.equalsIgnoreCase("paper"))
+        {
+            System.out.println("Paper 📄 beats rock! "+ player1.getName() +" wins!");
+            player1.win();
+        }
+        else if (move1.equalsIgnoreCase("Scissors") && move2.equalsIgnoreCase("Paper"))
+        {
+            System.out.println("Scissors ✂️ beats paper! Computer wins!");
+            playerTwo.win();
+        }
+        else if (move1.equalsIgnoreCase("Paper") && move2.equalsIgnoreCase("Scissors"))
+        {
+            System.out.println("Scissors ✂️ beats paper! "+ player1.getName() +" wins!");
+            player1.win();
+        }
+        else if (move1.equalsIgnoreCase("Rock") && move2.equalsIgnoreCase("Scissors"))
+        {
+            System.out.println("Rock 🪨️ beats scissors! Computer wins!");
+            playerTwo.win();
+        }
+        else if (move1.equalsIgnoreCase("Scissors") && move2.equalsIgnoreCase("rock"))
+        {
+            System.out.println("Rock 🪨️ beats scissors! "+ player1.getName() +" wins!");
+            player1.win();
         }
     }
-
-//    public static String computerMove()
-//    {
-//        Random myRandom = new Random();
-//        int x = myRandom.nextInt(3);
-//        if (x == 1)
-//        {
-//            return "Rock 🪨";
-//        }
-//        else if (x ==2)
-//        {
-//            return "Paper 📄";
-//        }
-//        else
-//        {
-//            return "Scissors ✂️";
-//        }
-//    }
+    public static void determineWinnerWithComputers(String move1, String move2)
+    {
+        if (move1.equalsIgnoreCase(move2))
+        {
+            System.out.println("Game resulted in a draw!");
+        }
+        else if (move1.equalsIgnoreCase("Paper") && move2.equalsIgnoreCase("rock"))
+        {
+            System.out.println("Paper 📄 beats rock! Computer 2 wins!");
+            playerTwo.win();
+        }
+        else if (move1.equalsIgnoreCase("rock") && move2.equalsIgnoreCase("paper"))
+        {
+            System.out.println("Paper 📄 beats rock! Computer 1 wins!");
+            playerOne.win();
+        }
+        else if (move1.equalsIgnoreCase("Scissors") && move2.equalsIgnoreCase("Paper"))
+        {
+            System.out.println("Scissors ✂️ beats paper! Computer 2 wins!");
+            playerTwo.win();
+        }
+        else if (move1.equalsIgnoreCase("Paper") && move2.equalsIgnoreCase("Scissors"))
+        {
+            System.out.println("Scissors ✂️ beats paper! Computer 1 wins!");
+            playerOne.win();
+        }
+        else if (move1.equalsIgnoreCase("Rock") && move2.equalsIgnoreCase("Scissors"))
+        {
+            System.out.println("Rock 🪨️ beats scissors! Computer 2 wins!");
+            playerTwo.win();
+        }
+        else if (move1.equalsIgnoreCase("Scissors") && move2.equalsIgnoreCase("rock"))
+        {
+            System.out.println("Rock 🪨️ beats scissors! Computer 1 wins!");
+            playerOne.win();
+        }
+    }
 
     public static void quit()
     {
@@ -126,7 +176,7 @@ public class Main {
         else
         {
             System.out.println("Player 1: " + playerOne.getScore());
-            System.out.println("PLayer 2: " + playerTwo.getScore());
+            System.out.println("Player 2: " + playerTwo.getScore());
         }
 
         if (!selection.equals("3")){

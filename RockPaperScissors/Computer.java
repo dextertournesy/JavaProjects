@@ -2,17 +2,21 @@ package RockPaperScissors;
 
 import java.util.Random;
 
-public class Computer {
+public class Computer extends Player{
     private int score = 0;
     private String computerName;
     private String move;
 
-
-    public Computer(String computerName) {
-        this.computerName = computerName;
-        score = 0;
-        move = null;
+    public Computer(String name) {
+        super(name);
     }
+
+
+//    public Computer(String computerName) {
+//        this.computerName = computerName;
+//        score = 0;
+//        move = null;
+//    }
 
     public void setMove(String move) {
         this.move = move;
@@ -42,15 +46,15 @@ public class Computer {
         int x = myRandom.nextInt(3);
         if (x == 1)
         {
-            return "Rock 🪨";
+            return "Rock";
         }
         else if (x ==2)
         {
-            return "Paper 📄";
+            return "Paper";
         }
         else
         {
-            return "Scissors ✂️";
+            return "Scissors";
         }
     }
 }
